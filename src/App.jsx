@@ -42,7 +42,7 @@ function ChatAssistant(){
    <form className="ai-chat-form" onSubmit={send}><input value={input} onChange={e=>setInput(e.target.value)} placeholder="Write a message…" aria-label="Your message" disabled={loading}/><button type="submit" disabled={loading||!input.trim()} aria-label="Send message">↗</button></form>
    <p className="ai-chat-footnote">AI can make mistakes. For project bookings, contact us directly.</p>
   </section>}
-  <button className="ai-chat-launcher" type="button" onClick={()=>setOpen(v=>!v)} aria-expanded={open}><span className="ai-chat-launch-icon">{open?'×':'✳'}</span><span>{open?'Close chat':'Chat with Envision AI'}</span></button>
+  <button className="ai-chat-launcher" type="button" onClick={()=>setOpen(v=>!v)} aria-expanded={open}><span className={'ai-chat-launch-icon '+(open?'is-open':'')} aria-hidden="true">{open?<span className="ai-chat-close">×</span>:<><span className="ai-chat-orbit"/><svg viewBox="0 0 48 48" role="presentation"><path className="ai-nib" d="M11 34.5 16 19 30 8l10 10-11 14-15.5 5.5L11 34.5Z"/><path className="ai-nib-cut" d="m16 19 14 13M30 8l10 10"/><path className="ai-nib-dot" d="m11 34.5 3.5 3.5"/></svg><i className="ai-chat-spark">✦</i></>}</span><span>{open?'Close chat':'Chat with Envision AI'}</span></button>
  </div>;
 }
 
