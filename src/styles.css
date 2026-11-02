@@ -147,3 +147,18 @@
   .filter-row{gap:7px}
   .filter-row button{padding:9px 12px;font-size:10px}
 }
+
+
+/* Founder profile and studio values */
+.founder-section{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(240px,.8fr);gap:clamp(28px,6vw,80px);align-items:center;background:#f1eee7}
+.founder-copy{max-width:620px}
+.founder-copy h2{font-family:var(--serif);font-size:clamp(42px,6vw,70px);line-height:1.02;letter-spacing:-.045em;margin:14px 0 26px}
+.founder-copy h3{font-size:25px;margin:0 0 5px;color:#282638}
+.founder-role{font-size:11px;text-transform:uppercase;letter-spacing:.13em;font-weight:800;color:#7668c9;margin:0 0 18px}
+.founder-copy>p:last-child{font-size:15px;line-height:1.85;color:#625e5a;max-width:580px}
+.founder-photo{justify-self:end;width:min(100%,390px);height:460px;overflow:hidden;border-radius:180px 180px 18px 18px;background:#e4dff1}
+.founder-photo img{width:100%;height:100%;object-fit:cover;display:block}
+.studio-values{display:grid;grid-template-columns:1fr 1fr;gap:18px;background:#e9e5f1;padding-top:55px;padding-bottom:55px}
+.studio-values article{padding:28px;background:rgba(255,255,255,.72);border-radius:14px}
+.studio-values article>p:last-child{font-family:var(--serif);font-size:clamp(19px,2.5vw,27px);line-height:1.45;color:#302d3d;margin:15px 0 0}
+@media(max-width:700px){.founder-section{grid-template-columns:1fr}.founder-photo{justify-self:start;width:min(100%,330px);height:390px}.studio-values{grid-template-columns:1fr;padding-top:35px;padding-bottom:35px}}
