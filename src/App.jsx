@@ -10,6 +10,42 @@ const services=[
 ['04','Product displays','Polished product visuals and mockups that make people take a closer look.'],
 ['05','Business mockups','Realistic brand presentations that help people picture your business.'],
 ['06','Creative design','Custom visual solutions shaped around your ideas and goals.']];
+
+function ChatAssistant(){
+ const [open,setOpen]=useState(false);
+ const [input,setInput]=useState('');
+ const [loading,setLoading]=useState(false);
+ const [error,setError]=useState('');
+ const [messages,setMessages]=useState([{role:'assistant',content:'Hi! I’m Envision AI. Ask me about our design services, your project ideas, or anything you’d like help thinking through.'}]);
+ const send=async ev=>{
+  ev?.preventDefault();
+  const text=input.trim();
+  if(!text||loading)return;
+  const next=[...messages,{role:'user',content:text}];
+  setMessages(next);setInput('');setError('');setLoading(true);
+  try{
+   if(!db)throw new Error('The chat service is not configured yet. Please contact us on WhatsApp.');
+   const {data,error:invokeError}=await db.functions.invoke('poe-chat',{body:{messages:next.map(({role,content})=>({role,content}))}});
+   if(invokeError)throw invokeError;
+   const answer=data?.choices?.[0]?.message?.content;
+   if(typeof answer!=='string'||!answer.trim())throw new Error(data?.error?.message||data?.error||'The assistant returned an empty response. Please try again.');
+   setMessages(current=>[...current,{role:'assistant',content:answer.trim()}]);
+  }catch(err){
+   setError(err?.message||'Something went wrong. Please try again.');
+  }finally{setLoading(false)}
+ };
+ return <div className="ai-chat-widget">
+  {open&&<section className="ai-chat-panel" aria-label="Envision AI chat">
+   <div className="ai-chat-head"><div className="ai-chat-avatar">E<span>.</span></div><div><b>Envision AI</b><small><i/> Online assistant</small></div><button type="button" onClick={()=>setOpen(false)} aria-label="Close chat">×</button></div>
+   <div className="ai-chat-messages" aria-live="polite">{messages.map((m,i)=><div className={'ai-chat-message '+m.role} key={i}><span>{m.content}</span></div>)}{loading&&<div className="ai-chat-message assistant"><span className="ai-typing">Envision AI is thinking…</span></div>}</div>
+   {error&&<p className="ai-chat-error">{error}</p>}
+   <form className="ai-chat-form" onSubmit={send}><input value={input} onChange={e=>setInput(e.target.value)} placeholder="Write a message…" aria-label="Your message" disabled={loading}/><button type="submit" disabled={loading||!input.trim()} aria-label="Send message">↗</button></form>
+   <p className="ai-chat-footnote">AI can make mistakes. For project bookings, contact us directly.</p>
+  </section>}
+  <button className="ai-chat-launcher" type="button" onClick={()=>setOpen(v=>!v)} aria-expanded={open}><span className="ai-chat-launch-icon">{open?'×':'✳'}</span><span>{open?'Close chat':'Chat with Envision AI'}</span></button>
+ </div>;
+}
+
 function PublicApp(){
 const [projects,setProjects]=useState([]),[menu,setMenu]=useState(false),[status,setStatus]=useState(''),[sending,setSending]=useState(false);
 const empty={name:'',email:'',whatsapp:'',business:'',service:'',description:'',budget:'',deadline:''};
@@ -26,7 +62,7 @@ return <div><header className="site-header"><div className="nav-wrap"><a classNa
 <section className="manifesto"><div className="manifesto-left"><div className="manifesto-symbol">E<span>.</span></div><p className="manifesto-small">THINK CLEAR.<br/>DESIGN BOLD.<br/>MAKE IT MATTER.</p></div><div className="manifesto-right"><p className="eyebrow">04 / OUR APPROACH</p><h2>Not just good-looking. Good <em>thinking,</em> made visual.</h2><p>We don't believe in design for decoration alone. Every colour, typeface and layout should have a reason to be there — and a job to do for your brand.</p><a className="button button-light" href="#contact">Let's create something <span>↗</span></a></div></section>
 <section className="process section-pad"><div className="section-head"><p className="eyebrow">05 / HOW WE WORK</p><h2>Simple process.<br/><em>Thoughtful results.</em></h2></div><div className="process-grid">{[['01','Discover','We listen, understand your goals and get to know your brand.'],['02','Concept','We develop a clear creative direction for your project.'],['03','Create','We bring the idea to life with care and attention to detail.'],['04','Deliver','You receive polished designs ready to put your brand forward.']].map(([n,t,d])=><div className="process-step" key={n}><span>{n}</span><div className="step-line"/><h3>{t}</h3><p>{d}</p></div>)}</div></section>
 <section className="contact section-pad" id="contact"><div className="contact-intro"><p className="eyebrow">06 / LET'S MAKE IT HAPPEN</p><h2>Have a good<br/>idea? <em>Let's talk.</em></h2><p>Tell us a little about what you're building. We'll get back to you and take it from there.</p><div className="contact-direct"><span>PREFER A QUICK CHAT?</span><a href="https://wa.me/2347066923248" target="_blank" rel="noreferrer">Chat with us on WhatsApp <span>↗</span></a><a href="mailto:hello@envisionstudio.com">Send an email <span>↗</span></a></div></div><form className="enquiry-form" onSubmit={submit}><div className="form-grid"><label>Your name *<input name="name" value={form.name} onChange={change} required placeholder="Name"/></label><label>Email address *<input type="email" name="email" value={form.email} onChange={change} required placeholder="you@example.com"/></label><label>WhatsApp number<input name="whatsapp" value={form.whatsapp} onChange={change} placeholder="+234..."/></label><label>Business / brand<input name="business" value={form.business} onChange={change} placeholder="Your business name"/></label><label className="full">What do you need? *<select name="service" value={form.service} onChange={change} required><option value="">Choose a service</option>{services.map(s=><option key={s[0]} value={s[1]}>{s[1]}</option>)}</select></label><label className="full">Tell us about your project *<textarea name="description" value={form.description} onChange={change} required rows="4" placeholder="What do you have in mind?"/></label><label>Estimated budget<input name="budget" value={form.budget} onChange={change} placeholder="Optional"/></label><label>Target deadline<input type="date" name="deadline" value={form.deadline} onChange={change}/></label></div><button className="button button-dark submit-btn" disabled={sending}>{sending?'Sending...':'Send project enquiry'} <span>↗</span></button>{status&&<p className="form-status">{status}</p>}<p className="form-note">Your details are used only to respond to your project enquiry.</p></form></section></main>
-<footer className="footer"><div className="footer-top"><div><a className="brand brand-light" href="#home"><span className="brand-mark"><i/><i/><i/></span><span className="brand-name">Envision<span>Studio</span></span></a><p>Ideas, made visible.<br/>Creative design for brands with something to say.</p></div><div className="footer-links"><span>EXPLORE</span><a href="#services">Services</a><a href="#work">Our work</a><a href="#about">About us</a></div><div className="footer-links"><span>GET IN TOUCH</span><a href="https://wa.me/2347066923248">WhatsApp</a><a href="mailto:hello@envisionstudio.com">Email</a><a href="#contact">Start a project</a></div><div className="footer-note">Your ideas.<br/><em>Our canvas.</em></div></div><div className="footer-bottom"><span>© {new Date().getFullYear()} ENVISION STUDIO. ALL RIGHTS RESERVED.</span><span>MADE WITH <b>✳</b> AND INTENTION.</span><a href="#home">BACK TO TOP ↑</a></div></footer></div>}
+<footer className="footer"><div className="footer-top"><div><a className="brand brand-light" href="#home"><span className="brand-mark"><i/><i/><i/></span><span className="brand-name">Envision<span>Studio</span></span></a><p>Ideas, made visible.<br/>Creative design for brands with something to say.</p></div><div className="footer-links"><span>EXPLORE</span><a href="#services">Services</a><a href="#work">Our work</a><a href="#about">About us</a></div><div className="footer-links"><span>GET IN TOUCH</span><a href="https://wa.me/2347066923248">WhatsApp</a><a href="mailto:hello@envisionstudio.com">Email</a><a href="#contact">Start a project</a></div><div className="footer-note">Your ideas.<br/><em>Our canvas.</em></div></div><div className="footer-bottom"><span>© {new Date().getFullYear()} ENVISION STUDIO. ALL RIGHTS RESERVED.</span><span>MADE WITH <b>✳</b> AND INTENTION.</span><a href="#home">BACK TO TOP ↑</a></div></footer><ChatAssistant /></div>}
 function AdminApp(){
  const [session,setSession]=useState(null),[allowed,setAllowed]=useState(false),[checking,setChecking]=useState(true);
  const [email,setEmail]=useState(''),[password,setPassword]=useState(''),[loginError,setLoginError]=useState('');
