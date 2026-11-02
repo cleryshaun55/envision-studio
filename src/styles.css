@@ -86,3 +86,19 @@
 @keyframes finder-enter{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
 @media(max-width:900px){.finder-category-grid{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:650px){.finder-heading{align-items:flex-start}.finder-heading h2{font-size:43px;letter-spacing:-2px}.finder-sticker{width:75px;height:75px;flex-basis:75px;gap:2px}.finder-sticker b{font-size:23px}.finder-sticker span{font-size:6px}.finder-category-grid{grid-template-columns:1fr;gap:9px}.finder-category img{width:64px;height:56px}.finder-samples{padding:15px;margin-top:25px}.finder-sample-grid{grid-template-columns:1fr;gap:10px}.finder-sample{display:flex;align-items:center;min-height:90px}.finder-sample img{width:112px;height:92px}.finder-sample-copy{padding:10px}.finder-next{align-items:stretch;flex-direction:column}.finder-next button{width:100%;justify-content:center}.finder-step-label small{padding-left:0}}
+
+/* Warmer, more expressive brand atmosphere */
+:root{--paper:#f5f1e9;--line:#ded8cf}
+.site-header{background:rgba(245,241,233,.92)}
+.brand-mark i{background:linear-gradient(180deg,#8b75ee,#6251c9)}
+.brand-mark i:nth-child(2){background:linear-gradient(180deg,#ffad91,#ed765f)}
+.brand-mark i:nth-child(3){background:linear-gradient(180deg,#668de9,#4d63bf)}
+.brand-name{font-size:20px;letter-spacing:-1.1px;color:#282638}
+.brand-name span{font-weight:700;margin-left:5px;color:#7161c9}
+.hero{background:radial-gradient(ellipse at 88% 20%,#e9e3ff 0%,transparent 35%),linear-gradient(120deg,#f8f2e9 0%,#f4f0fa 100%)}
+.intro{background:#f0ebfb}
+.services{background:#e9e6df}
+.portfolio{background:#f8eee9}
+.process{background:#edf1f8}
+.contact{background:linear-gradient(135deg,#f0eafa 0%,#f7eee7 100%)}
+@media(max-width:650px){.brand-name{font-size:18px}}
