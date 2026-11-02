@@ -104,3 +104,46 @@
 @media(max-width:650px){.brand-name{font-size:18px}}
 
 .testimonials{background:#f5f1e9}.review-layout{display:grid;grid-template-columns:1.1fr .9fr;gap:36px;margin-top:32px;align-items:start}.review-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}.review-card,.review-empty{background:#fff;border:1px solid var(--line);border-radius:14px;padding:22px}.review-card p{font-family:var(--serif);font-size:19px;line-height:1.5;margin:16px 0 22px}.review-stars{color:#d58a47;letter-spacing:2px}.review-stars span{color:#ddd6cb}.review-card small{display:block;color:#827c75;margin-top:4px}.review-empty{grid-column:1/-1;min-height:160px}.review-form{background:#fff;border:1px solid var(--line);border-radius:15px;padding:25px;display:flex;flex-direction:column;gap:14px}.review-form h3{font-size:25px;margin:0}.review-form label{display:flex;flex-direction:column;gap:7px;font-size:11px;font-weight:700}.review-form input,.review-form select,.review-form textarea{width:100%;border:1px solid var(--line);border-radius:7px;padding:12px;background:white;font:inherit;font-size:13px}.review-form textarea{resize:vertical}@media(max-width:760px){.review-layout{grid-template-columns:1fr}.review-list{grid-template-columns:1fr}.review-form{padding:19px}}
+
+
+/* Final readability and catalogue polish */
+.art-poster strong{
+  font-weight:900;
+  color:#fff;
+  text-shadow:0 2px 0 rgba(22,24,68,.16);
+  letter-spacing:-.055em;
+  line-height:.9;
+}
+.art-poster strong i{
+  color:#ffd0bd;
+  font-weight:700;
+  text-shadow:0 1px 0 rgba(22,24,68,.2);
+}
+.poster-kicker,.poster-bottom{
+  color:#fff;
+  font-size:9px;
+  font-weight:800;
+  letter-spacing:1.15px;
+  text-shadow:0 1px 2px rgba(22,24,68,.22);
+}
+.art-note{font-weight:800;color:#282638}
+.art-card{font-weight:800;color:#282638}
+.filter-row{margin-top:28px;margin-bottom:24px}
+.filter-row button{font-weight:700;font-size:11px;min-height:38px}
+.project-meta h3{font-weight:800}
+.project-meta p{font-weight:700;letter-spacing:.08em}
+.review-card p{color:#292638}
+.review-card>b{font-size:13px}
+.review-form label{color:#292638}
+.review-form input,.review-form select,.review-form textarea{color:#292638;min-height:44px}
+.review-form textarea{min-height:110px}
+.admin-stats{grid-template-columns:repeat(auto-fit,minmax(145px,1fr))}
+.admin-stats span{line-height:1.35}
+@media(max-width:650px){
+  .art-poster{padding:20px 17px}
+  .art-poster strong{font-size:clamp(46px,13vw,64px);letter-spacing:-.06em;margin-top:58px}
+  .poster-kicker,.poster-bottom{font-size:7px;letter-spacing:.8px}
+  .poster-bottom{left:17px;bottom:18px}
+  .filter-row{gap:7px}
+  .filter-row button{padding:9px 12px;font-size:10px}
+}
