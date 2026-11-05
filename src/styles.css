@@ -368,3 +368,25 @@ body{background:radial-gradient(ellipse at 82% 8%,rgba(28,103,201,.18),transpare
 .faq-item>p{margin:0;padding:0 44px 23px 2px;color:#b2c3dc;line-height:1.8;font-size:14px;max-width:680px}
 .faq-item summary:focus-visible{outline:2px solid #55aaff;outline-offset:5px}
 @media(max-width:760px){.faq-layout{grid-template-columns:1fr;gap:30px}.faq-layout .section-head{position:static}.faq-item summary{grid-template-columns:1fr 26px 20px;padding:20px 0}.faq-item>p{padding-right:12px}}
+
+
+/* Envision Studio — quote-led engagement pathways */
+.engagement-section{background:#0b1d38;color:#f4f7ff;border-top:1px solid rgba(128,176,235,.13)}
+.engagement-section .section-head h2{color:#f4f7ff}
+.engagement-section .section-head h2 em{color:#ff82c2;text-shadow:0 0 22px rgba(255,130,194,.2)}
+.engagement-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;margin-top:42px}
+.engagement-card{display:flex;flex-direction:column;min-height:360px;padding:26px;border:1px solid rgba(132,178,235,.25);border-radius:18px;background:linear-gradient(145deg,rgba(35,76,128,.34),rgba(13,31,58,.55));transition:transform .22s,border-color .22s,background .22s}
+.engagement-card:hover{transform:translateY(-5px);border-color:rgba(91,171,255,.7);background:linear-gradient(145deg,rgba(43,92,151,.42),rgba(13,31,58,.72))}
+.engagement-card-top{display:flex;align-items:center;justify-content:space-between;color:#83bdff;font-size:10px;letter-spacing:.14em}
+.engagement-card-top b{font-size:22px;color:#ff82c2}
+.engagement-card h3{font-size:clamp(21px,2vw,27px);line-height:1.15;margin:35px 0 12px;color:#fff}
+.engagement-card>p{color:#b9c9df;font-size:14px;line-height:1.7;min-height:70px}
+.engagement-card ul{list-style:none;padding:0;margin:12px 0 28px;display:grid;gap:12px}
+.engagement-card li{position:relative;padding-left:22px;color:#dce6f4;font-size:13px;line-height:1.5}
+.engagement-card li:before{content:'✓';position:absolute;left:0;color:#78baff;font-weight:800}
+.engagement-link{margin-top:auto;display:flex;justify-content:space-between;align-items:center;width:100%;padding:15px 0 0;border:0;border-top:1px solid rgba(132,178,235,.25);background:none;color:#fff;font:inherit;font-weight:700;text-align:left;cursor:pointer}
+.engagement-link span{color:#ff82c2;font-size:20px}
+.quote-note{margin:24px 0 0;padding:17px 20px;border-left:3px solid #ff82c2;background:rgba(255,255,255,.045);color:#bdcce0;font-size:13px;line-height:1.7}
+.quote-note b{color:#fff}
+@media(max-width:850px){.engagement-grid{grid-template-columns:1fr 1fr}.engagement-card{min-height:330px}}
+@media(max-width:600px){.engagement-grid{grid-template-columns:1fr}.engagement-card{min-height:0}.engagement-card>p{min-height:0}}
