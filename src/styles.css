@@ -390,3 +390,23 @@ body{background:radial-gradient(ellipse at 82% 8%,rgba(28,103,201,.18),transpare
 .quote-note b{color:#fff}
 @media(max-width:850px){.engagement-grid{grid-template-columns:1fr 1fr}.engagement-card{min-height:330px}}
 @media(max-width:600px){.engagement-grid{grid-template-columns:1fr}.engagement-card{min-height:0}.engagement-card>p{min-height:0}}
+
+/* Quote-led service pathways */
+.engagement-section{background:#0b1d38;color:#f4f7ff;border-top:1px solid rgba(133,177,232,.14);border-bottom:1px solid rgba(133,177,232,.14)}
+.engagement-heading{max-width:1200px;margin:0 auto 42px;display:grid;grid-template-columns:1.2fr .8fr;gap:48px;align-items:end}
+.engagement-heading h2{color:#f4f7ff}.engagement-heading h2 em{color:#ff83c3;text-shadow:0 0 22px rgba(255,92,180,.22)}
+.engagement-heading .section-copy{color:#b5c6df;max-width:600px}
+.quote-note{border:1px solid rgba(105,171,255,.35);border-radius:18px;padding:24px;background:linear-gradient(135deg,rgba(48,113,190,.18),rgba(236,74,160,.09))}
+.quote-note span,.engagement-number{font-size:10px;letter-spacing:.16em;color:#80bdff;font-weight:800}
+.quote-note b{display:block;font-size:23px;line-height:1.25;margin:14px 0}.quote-note small{display:block;color:#b5c6df;line-height:1.7}
+.engagement-grid{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
+.engagement-card{border:1px solid rgba(137,174,220,.23);border-radius:18px;padding:clamp(22px,3vw,32px);background:rgba(255,255,255,.035);display:flex;flex-direction:column;min-height:390px}
+.engagement-card.featured{background:linear-gradient(155deg,rgba(40,105,183,.26),rgba(191,54,139,.13));border-color:rgba(116,177,255,.55);box-shadow:0 16px 45px rgba(0,0,0,.14)}
+.engagement-card h3{font-size:clamp(23px,2.3vw,30px);margin:18px 0 10px;color:#fff}
+.engagement-card>p{color:#b7c6dc;line-height:1.7;font-size:14px;min-height:72px}
+.engagement-card ul{padding-left:18px;margin:14px 0 28px;color:#d9e4f3;line-height:2;font-size:13px}
+.engagement-link{margin-top:auto;border:0;border-top:1px solid rgba(150,185,228,.25);padding:18px 0 0;background:none;color:#fff;font-weight:750;text-align:left;cursor:pointer;display:flex;justify-content:space-between;gap:12px}
+.engagement-link span{color:#ff83c3;font-size:18px}.engagement-link:hover{color:#91caff}
+.engagement-footnote{max-width:1200px;margin:28px auto 0;color:#b7c6dc;font-size:13px}
+.engagement-footnote a{color:#ff9bd0;font-weight:700;text-decoration:none;margin-left:4px}
+@media(max-width:850px){.engagement-heading{grid-template-columns:1fr;gap:24px}.engagement-grid{grid-template-columns:1fr}.engagement-card{min-height:0}.engagement-card>p{min-height:0}}
