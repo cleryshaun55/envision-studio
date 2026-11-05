@@ -410,3 +410,13 @@ body{background:radial-gradient(ellipse at 82% 8%,rgba(28,103,201,.18),transpare
 .engagement-footnote{max-width:1200px;margin:28px auto 0;color:#b7c6dc;font-size:13px}
 .engagement-footnote a{color:#ff9bd0;font-weight:700;text-decoration:none;margin-left:4px}
 @media(max-width:850px){.engagement-heading{grid-template-columns:1fr;gap:24px}.engagement-grid{grid-template-columns:1fr}.engagement-card{min-height:0}.engagement-card>p{min-height:0}}
+
+/* Portfolio case-study storytelling */
+.case-study-intro{font-size:15px;line-height:1.85;color:#526078;margin:0 0 24px}
+.case-study-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin:0 0 26px}
+.case-study-grid article{padding:18px;border:1px solid #e4e9f1;border-radius:13px;background:#f8faff}
+.case-study-grid article>span{font-size:10px;letter-spacing:.14em;font-weight:800;color:#397fc5}
+.case-study-grid article p{font-size:13px;line-height:1.75;color:#34445b;margin:10px 0 0;white-space:pre-line}
+.case-study-admin-note{grid-column:1/-1;padding:15px 17px;border-left:3px solid #4b9eea;background:#eff6ff;color:#15345b;font-size:11px;font-weight:800;letter-spacing:.13em}
+.case-study-admin-note small{display:block;margin-top:7px;font-size:12px;line-height:1.6;font-weight:400;letter-spacing:0;color:#536780}
+@media(max-width:600px){.case-study-grid{grid-template-columns:1fr}}
