@@ -435,3 +435,21 @@ body{background:radial-gradient(ellipse at 82% 8%,rgba(28,103,201,.18),transpare
 .enquiry-actions a,.enquiry-actions button{font-size:12px;font-weight:750;text-decoration:none;border:1px solid rgba(94,157,224,.28);border-radius:8px;padding:9px 12px;background:rgba(69,139,211,.08);color:inherit;cursor:pointer}
 .enquiry-actions .enquiry-whatsapp{background:rgba(40,170,112,.12);border-color:rgba(40,170,112,.35);color:#16875a}
 .enquiry-actions a:hover,.enquiry-actions button:hover{transform:translateY(-1px)}
+
+
+/* Enquiry quotation workflow */
+.quote-editor{margin:18px 0 14px;padding:18px;border:1px solid #dce3f0;border-radius:14px;background:linear-gradient(135deg,#f7f9ff,#fff)}
+.quote-editor-head{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:14px;color:#14213d}
+.quote-editor-head span{font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:6px 9px;border-radius:30px;background:#e9edff;color:#4054a4}
+.quote-fields{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.quote-fields label{display:flex;flex-direction:column;gap:6px;font-size:12px;font-weight:700;color:#34415d}
+.quote-fields input,.quote-fields textarea{width:100%;padding:10px 12px;border:1px solid #d8deeb;border-radius:9px;background:#fff;color:#17233e;font:inherit;font-size:13px;box-sizing:border-box}
+.quote-fields textarea{resize:vertical;min-height:84px}
+.quote-scope{grid-column:1/-1}
+.quote-actions{display:flex;flex-wrap:wrap;gap:8px;margin:13px 0 8px}
+.quote-actions button,.quote-actions a{display:inline-flex;align-items:center;justify-content:center;padding:9px 12px;border:1px solid #d6dced;border-radius:8px;background:#fff;color:#263b70;text-decoration:none;font:inherit;font-size:12px;font-weight:700;cursor:pointer}
+.quote-actions button:nth-child(2){background:#17294c;color:#fff;border-color:#17294c}
+.quote-actions a{background:#eaf7f0;border-color:#cdebd9;color:#17633d}
+.quote-actions a.is-disabled{opacity:.45;pointer-events:none}
+.quote-editor>small{display:block;color:#68738a;font-size:11px;line-height:1.5}
+@media(max-width:600px){.quote-fields{grid-template-columns:1fr}.quote-scope{grid-column:auto}.quote-editor{padding:14px}.quote-actions>*{flex:1 1 100%}}
