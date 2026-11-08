@@ -453,3 +453,8 @@ body{background:radial-gradient(ellipse at 82% 8%,rgba(28,103,201,.18),transpare
 .quote-actions a.is-disabled{opacity:.45;pointer-events:none}
 .quote-editor>small{display:block;color:#68738a;font-size:11px;line-height:1.5}
 @media(max-width:600px){.quote-fields{grid-template-columns:1fr}.quote-scope{grid-column:auto}.quote-editor{padding:14px}.quote-actions>*{flex:1 1 100%}}
+
+.quote-decision{margin:14px 0 8px;padding:13px;border:1px solid #d6e4f3;border-radius:10px;background:#f2f7fc}
+.quote-decision>b,.quote-decision>span{display:block}.quote-decision>b{font-size:12px;color:#1b3558}.quote-decision>span{font-size:11px;line-height:1.5;color:#61728a;margin:5px 0 10px}
+.quote-decision>div{display:flex;gap:8px;flex-wrap:wrap}.quote-decision button{border:1px solid #c9d8e8;border-radius:7px;padding:8px 11px;background:#fff;color:#1d4770;font-size:11px;font-weight:750;cursor:pointer}.quote-decision button:first-child{background:#e9f7ef;border-color:#c7e8d4;color:#17613a}.quote-decision button:last-child{background:#fff1f1;border-color:#f1d4d4;color:#963b3b}
+.quote-accepted-note{padding:10px 12px;border-radius:8px;background:#eaf7ef;color:#17613a;font-size:12px;font-weight:700}
