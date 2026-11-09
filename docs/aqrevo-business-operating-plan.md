@@ -143,7 +143,7 @@ The admin system separates enquiries, quotations, quotation line items, payments
 
 ## 7. Website and technology
 
-The current public website remains **Envision Studio** until the AQREVO name is cleared and the rebrand is approved.
+The public website now uses **AQREVO — The Creative House**. Trademark clearance, CAC name availability and domain ownership remain separate checks.
 
 The business operations workspace is designed to support:
 - Editable service catalogue and starting prices.
