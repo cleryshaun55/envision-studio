@@ -1,6 +1,6 @@
-# Envision Studio website
+# AQREVO — The Creative House
 
-A responsive React + Vite website for Envision Studio.
+A responsive React + Vite website for AQREVO — The Creative House.
 
 ## Included
 - Homepage, services, portfolio filters, about/manifesto, process and contact sections
@@ -33,7 +33,7 @@ A responsive React + Vite website for Envision Studio.
 The contact form saves enquiries to the `enquiries` table when Supabase is configured. Without Supabase, it prepares the enquiry in WhatsApp instead. The dashboard uses Supabase Auth; only UUIDs listed in `admin_users` can manage projects or read enquiries.
 
 ## Before public launch
-- Replace the illustrative portfolio concepts with real approved Envision Studio work.
+- Replace the illustrative portfolio concepts with real approved AQREVO work.
 - Confirm image licensing and availability; the current concept images are remote Unsplash URLs.
 - Add a custom domain and hosting provider.
 - Add your real business email and any other confirmed social accounts.
@@ -43,6 +43,10 @@ The contact form saves enquiries to the `enquiries` table when Supabase is confi
 - Set up backups and test access policies before collecting real customer enquiries.
 
 ## Brand details used
+- Public brand: AQREVO — The Creative House
+- Tagline: Make Ideas Iconic.
+- Visual direction: warm ivory, deep navy and electric blue
+- Brand legal status: owner-approved brand direction; trademark/CAC/domain clearance remains separate
 - WhatsApp: +2347066923248
 - Facebook: https://facebook.com/profile.php?id=61589018991358
 
