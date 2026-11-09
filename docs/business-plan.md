@@ -98,6 +98,7 @@ Keep public pricing quote-led. The service catalogue stores editable internal st
 | Basic brand identity | ₦20,000 |
 | Product advertisement | ₦5,000 |
 | Product mockup | ₦4,000 |
+| Business mockup | ₦4,000 |
 | Social media bundle | ₦12,000 |
 | Starter business branding | ₦25,000 |
 | Creative direction | Custom quote |
