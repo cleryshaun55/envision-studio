@@ -125,6 +125,7 @@ grant select (id, slug, category, name, description, pricing_unit,
               delivery_min_days, delivery_max_days, deliverables,
               revisions_included, sort_order)
 on public.service_catalogue to anon;
+grant select (is_active, is_public) on public.service_catalogue to anon;
 
 create or replace view public.public_service_catalogue
 with (security_invoker = true, security_barrier = true)
