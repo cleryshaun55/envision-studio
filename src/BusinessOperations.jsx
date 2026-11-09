@@ -47,7 +47,7 @@ export default function BusinessOperations({ db, enquiries = [], onNotice = () =
   const refresh = async () => { await Promise.all([loadServices(), loadQuotes()]); };
   useEffect(() => { refresh(); }, []);
 
-  const subtotal = useMemo(() => items.reduce((sum, item) => sum + Number(item.quantity || 0) * Number(item.unit_price || 0), 0), [items]);
+  const subtotal = useMemo(() => items.reduce((sum, item) => { const name = String(item.service_name || '').trim(); const quantity = Number(item.quantity || 0); const unitPrice = Number(item.unit_price || 0); return name && quantity > 0 && unitPrice >= 0 ? sum + quantity * unitPrice : sum; }, 0), [items]);
   const discount = Math.max(0, Number(quoteForm.discount_amount || 0));
   const total = Math.max(0, subtotal - discount);
   const initialPayment = total * Number(quoteForm.deposit_percent || 0) / 100;
@@ -137,6 +137,7 @@ export default function BusinessOperations({ db, enquiries = [], onNotice = () =
     const cleanItems = items.filter(item => item.service_name.trim() && Number(item.quantity) > 0 && Number(item.unit_price) >= 0);
     if (!cleanItems.length) return say('Add at least one valid quotation line item.');
     if (discount > subtotal) return say('Discount cannot be greater than the subtotal.');
+    if (!Number.isFinite(Number(quoteForm.deposit_percent)) || Number(quoteForm.deposit_percent) < 0 || Number(quoteForm.deposit_percent) > 100) return say('Initial payment must be between 0% and 100%.');
     const totalAmount = subtotal - discount;
     const deposit = totalAmount * Number(quoteForm.deposit_percent || 0) / 100;
     setBusy(true);
@@ -203,6 +204,13 @@ export default function BusinessOperations({ db, enquiries = [], onNotice = () =
     if (error) return say('Could not record payment: ' + error.message);
     setPaymentDrafts(current => ({ ...current, [quote.id]:{ amount:'', method:'Bank transfer', reference:'', date:'' } }));
     say('Payment recorded as pending verification.'); await loadQuotes();
+  };
+  const rejectPayment = async payment => {
+    if (payment.status !== 'Pending') return;
+    if (!window.confirm('Reject this payment record? It will not count toward the verified balance.')) return;
+    const { error } = await db.from('payments').update({ status:'Rejected', verified_at:null, verified_by:null }).eq('id', payment.id);
+    if (error) return say('Could not reject payment: ' + error.message);
+    say('Payment marked as rejected.'); await loadQuotes();
   };
   const verifyPayment = async payment => {
     const status = payment.status === 'Verified' ? 'Pending' : 'Verified';
@@ -281,7 +289,7 @@ export default function BusinessOperations({ db, enquiries = [], onNotice = () =
         return <article className="ops-quote-card" key={quote.id}>
           <div className="ops-quote-card-head"><div><small>{quote.quote_number} · {new Date(quote.created_at).toLocaleDateString()}</small><h5>{quote.project_title}</h5><p>{quote.client_name} {quote.client_email?'· '+quote.client_email:''}</p></div><select value={quote.status} onChange={e=>updateQuoteStatus(quote,e.target.value)} aria-label={'Status for '+quote.quote_number}><option>Draft</option><option>Sent</option><option>Accepted</option><option>Declined</option><option>Expired</option><option>Cancelled</option></select></div>
           <div className="ops-quote-figures"><div><small>Total</small><b>{money(quote.total_amount)}</b></div><div><small>Verified payments</small><b>{money(paid)}</b></div><div><small>Outstanding</small><b>{money(balance)}</b></div></div>
-          <details className="ops-quote-details"><summary>View line items & payment history</summary><div className="ops-quote-items">{(quote.items||[]).map(item=><div key={item.id}><span>{item.service_name} × {item.quantity}<small>{item.description}</small></span><b>{money(item.line_total)}</b></div>)}</div><div className="ops-quote-items"><b>Payment records</b>{(quote.payments||[]).length ? quote.payments.map(payment=><div key={payment.id}><span>{money(payment.amount)} · {payment.payment_method || 'Payment'}<small>{payment.payment_date} · {payment.transaction_reference || 'No reference'} · {payment.status}</small></span>{payment.status!=='Rejected'&&<button onClick={()=>verifyPayment(payment)}>{payment.status==='Verified'?'Undo verification':'Verify payment'}</button>}</div>) : <small>No payments recorded.</small>}</div></details>
+          <details className="ops-quote-details"><summary>View line items & payment history</summary><div className="ops-quote-items">{(quote.items||[]).map(item=><div key={item.id}><span>{item.service_name} × {item.quantity}<small>{item.description}</small></span><b>{money(item.line_total)}</b></div>)}</div><div className="ops-quote-items"><b>Payment records</b>{(quote.payments||[]).length ? quote.payments.map(payment=><div key={payment.id}><span>{money(payment.amount)} · {payment.payment_method || 'Payment'}<small>{payment.payment_date} · {payment.transaction_reference || 'No reference'} · {payment.status}</small></span>{payment.status==='Pending'&&<><button onClick={()=>verifyPayment(payment)}>Verify payment</button><button onClick={()=>rejectPayment(payment)}>Reject payment</button></>}{payment.status==='Verified'&&<button onClick={()=>verifyPayment(payment)}>Undo verification</button>}</div>) : <small>No payments recorded.</small>}</div></details>
           <div className="ops-share-actions"><button onClick={()=>printQuote(quote)}>Print / Save PDF</button>{quote.client_whatsapp&&<a target="_blank" rel="noreferrer" href={'https://wa.me/'+quote.client_whatsapp.replace(/[^0-9]/g,'')+'?text='+encodeURIComponent(quoteMessage(quote))}>Open WhatsApp message ↗</a>}{quote.client_email&&<a href={'mailto:'+encodeURIComponent(quote.client_email)+'?subject='+encodeURIComponent('Quotation '+quote.quote_number+' — Envision Studio')+'&body='+encodeURIComponent(quoteMessage(quote))}>Prepare email ↗</a>}</div>
           <div className="ops-payment-form"><b>Record a payment</b><div><input aria-label="Payment amount" type="number" min="1" placeholder="Amount (NGN)" value={paymentDrafts[quote.id]?.amount||''} onChange={e=>changePaymentDraft(quote.id,'amount',e.target.value)}/><select aria-label="Payment method" value={paymentDrafts[quote.id]?.method||'Bank transfer'} onChange={e=>changePaymentDraft(quote.id,'method',e.target.value)}><option>Bank transfer</option><option>Cash</option><option>Mobile transfer</option><option>Other</option></select><input aria-label="Transaction reference" placeholder="Transaction reference" value={paymentDrafts[quote.id]?.reference||''} onChange={e=>changePaymentDraft(quote.id,'reference',e.target.value)}/><button onClick={()=>recordPayment(quote)}>Save pending payment</button></div><small>Only mark a payment verified after checking the actual transaction in your account. A screenshot alone is not proof of cleared funds.</small></div>
         </article>;
