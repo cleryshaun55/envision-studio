@@ -509,3 +509,9 @@ body{background:radial-gradient(ellipse at 82% 8%,rgba(28,103,201,.18),transpare
 .project-tracker-empty p{margin:8px 0 0;color:#718096;font-size:12px;line-height:1.6}
 @media(max-width:760px){.project-tracker-grid{grid-template-columns:1fr}}
 @media(max-width:560px){.project-tracker-summary{grid-template-columns:1fr 1fr}.project-tracker-summary>div:last-child{grid-column:1/-1}.project-tracker-fields{grid-template-columns:1fr}.project-tracker-notes{grid-column:auto}.project-tracker-card{padding:14px}.project-tracker-details span{align-items:flex-start;flex-direction:column;gap:3px}.project-tracker-details b{max-width:100%;text-align:left}}
+
+
+/* Public service catalogue pricing guidance */
+.service-offerings{display:flex;flex-wrap:wrap;gap:7px;margin:14px 0 18px}
+.service-offerings span{display:inline-flex;padding:7px 10px;border:1px solid rgba(25,43,73,.14);border-radius:30px;background:rgba(255,255,255,.72);color:#34445e;font-size:10px;line-height:1.35}
+.service-pricing-note{max-width:1200px;margin:22px auto 0;color:#b8c7dc;font-size:12px;line-height:1.7}
