@@ -219,7 +219,9 @@ export default function BusinessOperations({ db, enquiries = [], onNotice = () =
       const alreadyVerified = (quote?.payments || []).filter(item => item.status === 'Verified' && item.id !== payment.id).reduce((sum,item) => sum + Number(item.amount), 0);
       if (alreadyVerified + Number(payment.amount) > Number(quote?.total_amount || 0)) return say('This verification would exceed the quotation total. Review the payment records first.');
     }
-    const { error } = await db.from('payments').update({ status, verified_at:status === 'Verified' ? new Date().toISOString() : null }).eq('id', payment.id);
+    const { data:{ user } } = await db.auth.getUser();
+    if (status === 'Verified' && !user) return say('Your admin session could not be verified. Sign in again before verifying this payment.');
+    const { error } = await db.from('payments').update({ status, verified_at:status === 'Verified' ? new Date().toISOString() : null, verified_by:status === 'Verified' ? user.id : null }).eq('id', payment.id);
     if (error) return say('Could not update payment: ' + error.message);
     say(status === 'Verified' ? 'Payment verified. The balance has been recalculated.' : 'Payment verification reversed.'); await loadQuotes();
   };
