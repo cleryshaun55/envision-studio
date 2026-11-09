@@ -172,6 +172,7 @@ values
 ('event-birthday-design','Advertising & Campaigns','Event or birthday design','A custom event, celebration or announcement graphic.',3000,'per_design',1,2,array['One event design','Digital-ready export'],2,80),
 ('product-advertisement','Product Visuals','Product advertisement','A product-focused promotional visual for digital marketing.',5000,'per_design',2,3,array['One product advertisement','Digital-ready export'],2,90),
 ('product-mockup','Product Visuals','Product mockup','A polished product or brand presentation mockup using supplied assets or an agreed concept.',4000,'per_project',2,4,array['One mockup presentation','High-resolution export'],2,100),
+('business-mockup','Product Visuals','Business mockup','A professional mockup presentation for a business identity, storefront, stationery or brand touchpoint.',4000,'per_project',2,4,array['One business mockup presentation','High-resolution export'],2,105),
 ('creative-direction','Creative Direction','Creative direction','Concept development and visual direction for larger or more specialised creative projects.',null,'custom',null,null,array['Creative brief review','Visual direction proposal','Agreed concept deliverables'],2,110)
 on conflict (slug) do nothing;
 
