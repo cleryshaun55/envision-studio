@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://envision-studio-one.vercel.app/sitemap.xml
