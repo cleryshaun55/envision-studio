@@ -2,11 +2,11 @@
 
 **Document status:** Working operating plan  
 **Active public brand:** AQREVO — The Creative House  
-**Proposed future brand:** AQREVO (working name only; not legally cleared)  
+**Brand status:** Owner-approved public brand; formal legal clearance pending  
 **Positioning:** The Creative House  
-**Proposed tagline:** Make Ideas Iconic.
+**Tagline:** Make Ideas Iconic.
 
- > AQREVO is the owner-approved public brand and is live on the website. Trademark clearance, CAC name availability and domain ownership remain separate checks and must not be represented as completed.
+> AQREVO is the owner-approved public brand and is live on the website. Trademark clearance, CAC name availability and domain ownership remain separate checks and must not be represented as completed.
 
 ## 1. Executive summary
 
