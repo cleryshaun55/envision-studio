@@ -1,0 +1,22 @@
+
+/* AQREVO service catalogue and quotation workspace */
+.aq-admin{margin:22px 0;padding:22px;border:1px solid rgba(120,155,205,.25);border-radius:18px;background:#0b1d38;color:#f4f7ff}
+.aq-head{display:flex;justify-content:space-between;align-items:flex-start;gap:20px;flex-wrap:wrap;margin-bottom:22px}
+.aq-head h3{margin:6px 0}.aq-head .form-note{color:#aebfd5}
+.aq-switch,.aq-buttons{display:flex;gap:8px;flex-wrap:wrap}
+.aq-switch button,.aq-service button,.aq-line-bottom button,.aq-quote-card button{border:1px solid rgba(140,180,230,.3);border-radius:8px;padding:9px 12px;background:#132d50;color:#eaf3ff;font:inherit;font-size:12px;font-weight:700;cursor:pointer}
+.aq-switch button.active{background:#2d7cff;border-color:#2d7cff;color:#fff}
+.aq-layout{display:grid;grid-template-columns:minmax(280px,.85fr) minmax(0,1.15fr);gap:22px;align-items:start}
+.aq-admin .admin-form{background:#102747;border-color:rgba(140,180,230,.22);padding:20px;border-radius:14px}
+.aq-admin .admin-form h4,.aq-admin h4{margin:0 0 16px;color:#fff;font-size:17px}
+.aq-admin .admin-form label{color:#e3edfb}
+.aq-admin .admin-form input,.aq-admin .admin-form select,.aq-admin .admin-form textarea{background:#071a34;border-color:rgba(140,180,230,.25);color:#fff}
+.aq-fields{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.aq-check{display:flex!important;flex-direction:row!important;align-items:center;gap:10px}.aq-check input{width:16px!important}
+.aq-service-list{display:grid;gap:10px}.aq-service-list h4{margin-bottom:2px}
+.aq-service,.aq-quote-card{padding:16px;border:1px solid rgba(140,180,230,.22);border-radius:12px;background:rgba(255,255,255,.035)}
+.aq-service{display:flex;justify-content:space-between;gap:14px}.aq-service b,.aq-quote-card b{display:block;color:#fff}.aq-service small,.aq-quote-card small{display:block;margin-top:5px;color:#aebfd5;font-size:11px}.aq-service p{margin:9px 0;color:#cfdaea;font-size:13px;line-height:1.6}.aq-service strong,.aq-quote-card strong{display:block;margin-top:7px;color:#8fc1ff}
+.aq-quote-form{max-width:820px;margin:auto;display:grid;gap:14px}.aq-line-item{padding:15px;border:1px solid rgba(140,180,230,.22);border-radius:12px;background:#0b203d;display:grid;gap:12px}.aq-line-bottom{display:flex;align-items:center;justify-content:space-between}.aq-line-bottom b{color:#9cc9ff}.aq-total{margin:8px 0;padding:16px;border-radius:12px;background:#071a34;display:grid;gap:10px}.aq-total>div{display:flex;justify-content:space-between;gap:14px;color:#c7d7eb}.aq-total .grand{padding-top:10px;border-top:1px solid rgba(140,180,230,.25);font-size:18px;color:#fff}.aq-total b{color:#fff}
+.aq-quotes-list{display:grid;gap:12px}.aq-quote-card{display:grid;grid-template-columns:1fr auto;gap:12px;align-items:start}.aq-quote-card .aq-buttons{grid-column:1/-1}.aq-status{padding:5px 9px;border-radius:20px;background:#263c5a;color:#dbeafe;font-size:11px;font-weight:800}.aq-status.accepted{background:#164e3b;color:#bbf7d0}.aq-status.declined,.aq-status.expired{background:#542c36;color:#fecdd3}.aq-status.sent{background:#183f69;color:#bfdbfe}
+@media(max-width:800px){.aq-layout{grid-template-columns:1fr}.aq-service{flex-direction:column}.aq-quote-card{grid-template-columns:1fr}.aq-quote-card .aq-buttons{grid-column:auto}}
+@media(max-width:520px){.aq-admin{padding:14px}.aq-fields{grid-template-columns:1fr}.aq-switch{width:100%}.aq-switch button{flex:1 1 100%}}
