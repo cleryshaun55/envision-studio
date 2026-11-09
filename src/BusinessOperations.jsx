@@ -57,6 +57,7 @@ export default function BusinessOperations({ db, enquiries = [], onNotice = () =
     event.preventDefault();
     if (!serviceForm.name.trim() || !serviceForm.category.trim()) return say('Add a service name and category first.');
     if (serviceForm.starting_price !== '' && Number(serviceForm.starting_price) < 0) return say('Starting price cannot be negative.');
+    if (serviceForm.delivery_min_days !== '' && serviceForm.delivery_max_days !== '' && Number(serviceForm.delivery_max_days) < Number(serviceForm.delivery_min_days)) return say('Maximum delivery days cannot be lower than minimum delivery days.');
     let addOns;
     try { addOns = JSON.parse(serviceForm.add_ons || '[]'); if (!Array.isArray(addOns)) throw new Error(); }
     catch { return say('Optional add-ons must be valid JSON in an array. Use [] if there are none.'); }
@@ -178,6 +179,8 @@ export default function BusinessOperations({ db, enquiries = [], onNotice = () =
     popup.document.close();
   };
   const updateQuoteStatus = async (quote, status) => {
+    if (status === 'Sent' && quote.status !== 'Sent' && !window.confirm('Only mark this quotation as sent after you have actually sent it to the client. Continue?')) return;
+    if (status === 'Accepted' && quote.status !== 'Accepted' && !window.confirm('Only mark this quotation as accepted after the client has explicitly agreed. Continue?')) return;
     const patch = { status, updated_at:new Date().toISOString() };
     if (status === 'Sent') patch.sent_at = new Date().toISOString();
     if (status === 'Accepted') patch.accepted_at = new Date().toISOString();
@@ -203,6 +206,11 @@ export default function BusinessOperations({ db, enquiries = [], onNotice = () =
   };
   const verifyPayment = async payment => {
     const status = payment.status === 'Verified' ? 'Pending' : 'Verified';
+    if (status === 'Verified') {
+      const quote = quotes.find(item => item.id === payment.quotation_id);
+      const alreadyVerified = (quote?.payments || []).filter(item => item.status === 'Verified' && item.id !== payment.id).reduce((sum,item) => sum + Number(item.amount), 0);
+      if (alreadyVerified + Number(payment.amount) > Number(quote?.total_amount || 0)) return say('This verification would exceed the quotation total. Review the payment records first.');
+    }
     const { error } = await db.from('payments').update({ status, verified_at:status === 'Verified' ? new Date().toISOString() : null }).eq('id', payment.id);
     if (error) return say('Could not update payment: ' + error.message);
     say(status === 'Verified' ? 'Payment verified. The balance has been recalculated.' : 'Payment verification reversed.'); await loadQuotes();
