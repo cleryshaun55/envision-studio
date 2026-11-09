@@ -115,12 +115,19 @@ grant select, insert, update, delete on public.project_updates to authenticated;
 
 drop policy if exists "Public can view active public services" on public.service_catalogue;
 drop policy if exists "Admins can view all services" on public.service_catalogue;
+create policy "Public can view active public services" on public.service_catalogue
+for select to anon using (is_active = true and is_public = true);
 create policy "Admins can view all services" on public.service_catalogue
 for select to authenticated using ((select public.is_admin()));
 
--- Public visitors use a restricted view that deliberately excludes internal starting prices and add-on pricing.
+-- Anonymous visitors receive column-level access only to fields exposed by the safe public view.
+grant select (id, slug, category, name, description, pricing_unit,
+              delivery_min_days, delivery_max_days, deliverables,
+              revisions_included, sort_order)
+on public.service_catalogue to anon;
+
 create or replace view public.public_service_catalogue
-with (security_barrier = true)
+with (security_invoker = true, security_barrier = true)
 as
 select id, slug, category, name, description, pricing_unit,
        delivery_min_days, delivery_max_days, deliverables,
