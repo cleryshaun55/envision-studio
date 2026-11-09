@@ -703,3 +703,44 @@ body{background:#F6F4EE;color:#10213B}
   html{scroll-behavior:auto}
   *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important}
 }
+
+
+/* AQREVO expressive identity — symbol-led, playful and polished */
+.brand{gap:12px}
+.brand-symbol{width:44px;height:44px;flex:0 0 44px;object-fit:contain;border-radius:14px;animation:mark-arrive .85s cubic-bezier(.2,.8,.2,1) both}
+.hero-brand-intro{display:flex;align-items:center;gap:17px;margin:0 0 27px;animation:mark-arrive .9s cubic-bezier(.2,.8,.2,1) both}
+.hero-brand-symbol{display:block;width:clamp(76px,10vw,116px);height:clamp(76px,10vw,116px);border-radius:28px;filter:drop-shadow(0 16px 22px rgba(16,33,59,.16));animation:mark-float 5.5s ease-in-out 1s infinite}
+.hero-brand-intro>div{display:flex;flex-direction:column;gap:5px}
+.hero-brand-intro>div span{font:850 clamp(25px,3vw,38px)/.95 var(--sans);letter-spacing:-1.8px;color:#10213B}
+.hero-brand-intro>div small{font:700 9px var(--mono);letter-spacing:1.6px;color:#64748B}
+.hero .eyebrow{margin-bottom:18px}
+.hero-art .art-poster{animation:poster-arrive .9s .15s both,poster-lift 6s 1.2s ease-in-out infinite}
+.hero-art .art-note{animation:note-arrive .75s .4s both}
+.hero-art .art-card{animation:card-arrive .8s .55s both}
+.hero-art .art-sticker{animation:sticker-arrive .8s .7s both,sticker-drift 7s 1.5s ease-in-out infinite}
+.service-card,.engagement-card,.project-card{transition:transform .35s cubic-bezier(.2,.8,.2,1),box-shadow .35s,border-color .35s}
+.service-card:hover,.engagement-card:hover{transform:translateY(-8px) rotate(-.35deg)}
+.project-card:hover{transform:translateY(-7px)}
+.service-image-wrap img,.project-image img{transition:transform .65s cubic-bezier(.2,.8,.2,1)}
+.service-card:hover .service-image-wrap img,.project-card:hover .project-image img{transform:scale(1.045)}
+.hero-proof .proof-mark{animation:proof-spin 12s linear infinite}
+.ai-chat-avatar{overflow:hidden}
+.ai-chat-avatar img{width:100%;height:100%;object-fit:cover;border-radius:50%}
+@keyframes mark-arrive{from{opacity:0;transform:translateY(14px) scale(.88) rotate(-8deg)}to{opacity:1;transform:translateY(0) scale(1) rotate(0)}}
+@keyframes mark-float{0%,100%{transform:translateY(0) rotate(0)}50%{transform:translateY(-8px) rotate(3deg)}}
+@keyframes poster-arrive{from{opacity:0;transform:translateY(24px) rotate(0)}to{opacity:1;transform:translateY(0) rotate(4deg)}}
+@keyframes note-arrive{from{opacity:0;transform:translate(12px,10px) rotate(0)}to{opacity:1;transform:translate(0,0) rotate(8deg)}}
+@keyframes card-arrive{from{opacity:0;transform:translate(-12px,12px) rotate(0)}to{opacity:1;transform:translate(0,0) rotate(-7deg)}}
+@keyframes sticker-arrive{from{opacity:0;transform:scale(.7) rotate(0)}to{opacity:1;transform:scale(1) rotate(10deg)}}
+@keyframes sticker-drift{0%,100%{translate:0 0;rotate:10deg}50%{translate:0 -8px;rotate:14deg}}
+@keyframes proof-spin{to{transform:rotate(360deg)}}
+@media(max-width:650px){
+ .hero-brand-intro{margin-bottom:22px}
+ .hero-brand-symbol{width:78px;height:78px;border-radius:21px}
+ .brand-symbol{width:40px;height:40px;flex-basis:40px}
+ .hero-art .art-poster{animation:poster-arrive .9s .15s both,poster-lift 6s 1.2s ease-in-out infinite}
+}
+@media(prefers-reduced-motion:reduce){
+ .brand-symbol,.hero-brand-intro,.hero-brand-symbol,.hero-art .art-poster,.hero-art .art-note,.hero-art .art-card,.hero-art .art-sticker,.hero-proof .proof-mark{animation:none!important}
+ .service-card,.engagement-card,.project-card,.service-image-wrap img,.project-image img{transition:none!important}
+}
