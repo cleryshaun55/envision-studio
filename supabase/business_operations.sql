@@ -105,7 +105,8 @@ alter table public.quotation_items enable row level security;
 alter table public.payments enable row level security;
 alter table public.project_updates enable row level security;
 
-grant select on public.service_catalogue to anon, authenticated;
+grant select on public.service_catalogue to authenticated;
+revoke select on public.service_catalogue from anon;
 grant insert, update, delete on public.service_catalogue to authenticated;
 grant select, insert, update, delete on public.quotations to authenticated;
 grant select, insert, update, delete on public.quotation_items to authenticated;
@@ -113,9 +114,21 @@ grant select, insert, update, delete on public.payments to authenticated;
 grant select, insert, update, delete on public.project_updates to authenticated;
 
 drop policy if exists "Public can view active public services" on public.service_catalogue;
-create policy "Public can view active public services" on public.service_catalogue
-for select to anon, authenticated
-using ((is_active = true and is_public = true) or (select public.is_admin()));
+drop policy if exists "Admins can view all services" on public.service_catalogue;
+create policy "Admins can view all services" on public.service_catalogue
+for select to authenticated using ((select public.is_admin()));
+
+-- Public visitors use a restricted view that deliberately excludes internal starting prices and add-on pricing.
+create or replace view public.public_service_catalogue
+with (security_barrier = true)
+as
+select id, slug, category, name, description, pricing_unit,
+       delivery_min_days, delivery_max_days, deliverables,
+       revisions_included, sort_order
+from public.service_catalogue
+where is_active = true and is_public = true;
+revoke all on public.public_service_catalogue from public;
+grant select on public.public_service_catalogue to anon, authenticated;
 drop policy if exists "Admins can insert services" on public.service_catalogue;
 create policy "Admins can insert services" on public.service_catalogue
 for insert to authenticated with check ((select public.is_admin()));
@@ -169,6 +182,8 @@ $$;
 revoke all on function public.is_admin() from public;
 revoke all on function public.is_admin() from anon;
 grant execute on function public.is_admin() to authenticated;
+
+notify pgrst, 'reload schema';
 
 -- Remove duplicate legacy policy names if this setup is applied over an earlier preview.
 drop policy if exists "Admins manage quotations" on public.quotations;
