@@ -1,6 +1,6 @@
 # Quotation and payment operations
 
-This guide documents the itemised quotation workflow in the Envision Studio admin dashboard. The proposed future AQREVO brand is not yet legally adopted.
+This guide documents the itemised quotation workflow in the AQREVO admin dashboard. AQREVO is the owner-approved public brand; formal trademark and CAC clearance remain separate outstanding checks.
 
 ## Where to find it
 
