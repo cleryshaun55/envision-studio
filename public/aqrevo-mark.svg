@@ -1,5 +1,12 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48">
-  <rect x="1" y="1" width="46" height="46" rx="13" fill="#10213B"/>
-  <path d="M8.5 34 18.2 12 27.8 34M12.4 25.2h11.5" fill="none" stroke="#FFFFFF" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/>
-  <path d="M28 18.5c3.8-4 10.9-2.3 11.5 3.6.6 5.9-4.3 9.4-9.7 7.6l4.5 5" fill="none" stroke="#82B4FF" stroke-width="3.1" stroke-linecap="round" stroke-linejoin="round"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 96" role="img" aria-labelledby="title">
+  <title id="title">AQREVO abstract symbol</title>
+  <rect width="96" height="96" rx="25" fill="#10213B"/>
+  <g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="9">
+    <path d="M48 17 C62 17 73 28 73 42 C73 49 68 55 60 59" stroke="#FFFFFF"/>
+    <path d="M79 48 C79 62 68 73 54 73 C47 73 41 68 37 60" stroke="#82B4FF"/>
+    <path d="M48 79 C34 79 23 68 23 54 C23 47 28 41 36 37" stroke="#FFFFFF"/>
+    <path d="M17 48 C17 34 28 23 42 23 C49 23 55 28 59 36" stroke="#82B4FF"/>
+  </g>
+  <path d="M48 36 L60 48 L48 60 L36 48 Z" fill="#FFFFFF"/>
+  <circle cx="48" cy="48" r="4" fill="#2D7CFF"/>
 </svg>
