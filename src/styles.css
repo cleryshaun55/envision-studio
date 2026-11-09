@@ -534,7 +534,7 @@ body{background:#F6F4EE;color:#10213B}
 .brand-lockup{display:flex;flex-direction:column;gap:1px;line-height:1}
 .brand-name,.brand-name span{font-size:20px;letter-spacing:-.7px;color:#10213B;font-weight:850}
 .brand-lockup small{font:700 8px var(--mono);letter-spacing:1.15px;color:#64748B}
-.brand-mark-letter{width:36px;height:36px;display:grid;place-items:center;border-radius:10px;background:#10213B;color:#fff;font-size:15px;font-weight:900;letter-spacing:-1px;box-shadow:0 5px 13px rgba(16,33,59,.14)}
+.brand-symbol{width:40px;height:40px;display:block;flex:0 0 40px;filter:drop-shadow(0 5px 9px rgba(16,33,59,.12))}
 .nav-wrap nav>a:not(.nav-cta){color:#526176}
 .nav-wrap nav>a.active,.nav-wrap nav>a:hover{color:#10213B}
 .nav-cta,.button-dark{background:#10213B;color:#fff;box-shadow:0 7px 18px rgba(16,33,59,.13)}
