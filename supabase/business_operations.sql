@@ -161,3 +161,7 @@ $$;
 revoke all on function public.is_admin() from public;
 revoke all on function public.is_admin() from anon;
 grant execute on function public.is_admin() to authenticated;
+
+-- Remove duplicate legacy policy names if this setup is applied over an earlier preview.
+drop policy if exists "Admins manage quotations" on public.quotations;
+drop policy if exists "Admins manage quotation items" on public.quotation_items;
