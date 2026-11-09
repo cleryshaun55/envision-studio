@@ -112,21 +112,29 @@ grant select, insert, update, delete on public.quotation_items to authenticated;
 grant select, insert, update, delete on public.payments to authenticated;
 grant select, insert, update, delete on public.project_updates to authenticated;
 
+drop policy if exists "Public can view active public services" on public.service_catalogue;
 create policy "Public can view active public services" on public.service_catalogue
 for select to anon, authenticated
 using ((is_active = true and is_public = true) or (select public.is_admin()));
+drop policy if exists "Admins can insert services" on public.service_catalogue;
 create policy "Admins can insert services" on public.service_catalogue
 for insert to authenticated with check ((select public.is_admin()));
+drop policy if exists "Admins can update services" on public.service_catalogue;
 create policy "Admins can update services" on public.service_catalogue
 for update to authenticated using ((select public.is_admin())) with check ((select public.is_admin()));
+drop policy if exists "Admins can delete services" on public.service_catalogue;
 create policy "Admins can delete services" on public.service_catalogue
 for delete to authenticated using ((select public.is_admin()));
+drop policy if exists "Admins can manage quotations" on public.quotations;
 create policy "Admins can manage quotations" on public.quotations
 for all to authenticated using ((select public.is_admin())) with check ((select public.is_admin()));
+drop policy if exists "Admins can manage quotation items" on public.quotation_items;
 create policy "Admins can manage quotation items" on public.quotation_items
 for all to authenticated using ((select public.is_admin())) with check ((select public.is_admin()));
+drop policy if exists "Admins can manage payments" on public.payments;
 create policy "Admins can manage payments" on public.payments
 for all to authenticated using ((select public.is_admin())) with check ((select public.is_admin()));
+drop policy if exists "Admins can manage project updates" on public.project_updates;
 create policy "Admins can manage project updates" on public.project_updates
 for all to authenticated using ((select public.is_admin())) with check ((select public.is_admin()));
 
