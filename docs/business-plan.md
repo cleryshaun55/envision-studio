@@ -1,12 +1,12 @@
-# AQREVO / Envision Studio — Business Plan v1
+# AQREVO — Business Plan v1
 
 **Document status:** Working operating plan  
-**Active public brand:** Envision Studio  
+**Active public brand:** AQREVO — The Creative House  
 **Proposed future brand:** AQREVO (working name only; not legally cleared)  
 **Positioning:** The Creative House  
 **Proposed tagline:** Make Ideas Iconic.
 
-> AQREVO is a working brand direction, not a final legal or commercial name. The live website remains Envision Studio until name, CAC and trademark checks are completed and the owner explicitly approves a rebrand.
+ > AQREVO is the owner-approved public brand and is live on the website. Trademark clearance, CAC name availability and domain ownership remain separate checks and must not be represented as completed.
 
 ## 1. Executive summary
 
@@ -19,7 +19,7 @@ The first operating phase is intentionally lean. Use the existing website, Whats
 ## 2. Brand foundation
 
 ### Working identity
-- **Name:** AQREVO — provisional
+- **Name:** AQREVO — owner-approved public brand; legal clearance pending
 - **Descriptor:** The Creative House
 - **Tagline:** Make Ideas Iconic.
 - **Personality:** Original, confident, intelligent, refined and innovative.
