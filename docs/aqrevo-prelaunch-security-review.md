@@ -34,6 +34,12 @@ This is a useful baseline, not a complete security certification or penetration 
 | Admin check function | Not security definer; fixed search path | Good |
 | Portfolio storage | Public bucket; authenticated admin-only uploads | Appropriate for public portfolio images |
 
+### Direct API privilege check
+
+The anonymous role has no direct table privileges on `admin_users`, `service_catalogue`, `quotations`, `quotation_items`, `payments` or `project_updates`. It has only the expected public-facing reads and public submission privileges for enquiries and testimonials. The authenticated role has broader SQL grants on operational tables, but the inspected RLS policies gate those operations through `is_admin()`.
+
+The public role can read the studio profile, so keep that table limited to information intended for the website.
+
 ## Items to address before public launch
 
 ### 1. Enable leaked-password protection
