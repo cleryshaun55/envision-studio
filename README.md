@@ -45,3 +45,12 @@ The contact form saves enquiries to the `enquiries` table when Supabase is confi
 ## Brand details used
 - WhatsApp: +2347066923248
 - Facebook: https://facebook.com/profile.php?id=61589018991358
+
+
+## Business operations (November 2026)
+
+The admin area now includes a service catalogue, itemised quotation builder, printable quotations, and payment records with verified-balance calculations. A project tracker is also available to administrators.
+
+The additive database setup is documented in `supabase/business_operations.sql`. It creates the service catalogue, quotations, quotation line items, payment ledger, and project update tables. All business records are admin-only through Row Level Security; only active and public service entries can be read by visitors. Existing enquiry-based quotation fields remain in place for backwards compatibility.
+
+The quotation workspace supports draft creation, custom line items, quantity and unit-price calculations, discounts, configurable deposits, validity dates, revision terms, timeline, WhatsApp/email handoff, and browser print-to-PDF. Payment entries begin as pending and must be verified against the actual account transaction before they reduce the outstanding balance.
