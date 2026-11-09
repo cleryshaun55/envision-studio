@@ -30,6 +30,7 @@ This is a useful baseline, not a complete security certification or penetration 
 | Payments | Admin-only access | Good |
 | Project updates | Admin-only access | Good |
 | Public catalogue view | Security-invoker and security-barrier options enabled; only public fields exposed | Good |
+| Catalogue base table | Anonymous role has no direct SELECT privilege; authenticated reads remain subject to the admin-only RLS policy | Good |
 | Admin check function | Not security definer; fixed search path | Good |
 | Portfolio storage | Public bucket; authenticated admin-only uploads | Appropriate for public portfolio images |
 
