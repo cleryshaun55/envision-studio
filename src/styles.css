@@ -163,7 +163,7 @@
 @media(max-width:700px){.founder-section{grid-template-columns:1fr}.founder-photo{justify-self:start;width:min(100%,330px);height:390px}.studio-values{grid-template-columns:1fr;padding-top:35px;padding-bottom:35px}}
 
 
-/* Envision Studio — midnight blue / electric blue / rose visual refresh */
+/* AQREVO — midnight blue / electric blue / rose visual refresh */
 :root{
   --paper:#07152d;
   --ink:#f5f7ff;
@@ -351,7 +351,7 @@ body{background:radial-gradient(ellipse at 82% 8%,rgba(28,103,201,.18),transpare
 @keyframes blue-glow{from{text-shadow:0 0 12px rgba(65,157,255,.24)}to{text-shadow:0 0 28px rgba(65,157,255,.52)}}
 
 
-/* FAQ — Envision Studio */
+/* FAQ — AQREVO */
 .faq-section{background:#081a34;border-top:1px solid rgba(139,181,231,.12)}
 .faq-layout{display:grid;grid-template-columns:.8fr 1.2fr;gap:clamp(36px,7vw,100px);max-width:1200px;margin:0 auto}
 .faq-layout .section-head{position:sticky;top:110px;align-self:start}
@@ -369,7 +369,7 @@ body{background:radial-gradient(ellipse at 82% 8%,rgba(28,103,201,.18),transpare
 @media(max-width:760px){.faq-layout{grid-template-columns:1fr;gap:30px}.faq-layout .section-head{position:static}.faq-item summary{grid-template-columns:1fr 26px 20px;padding:20px 0}.faq-item>p{padding-right:12px}}
 
 
-/* Envision Studio — quote-led engagement pathways */
+/* AQREVO — quote-led engagement pathways */
 .engagement-section{background:#0b1d38;color:#f4f7ff;border-top:1px solid rgba(128,176,235,.13)}
 .engagement-section .section-head h2{color:#f4f7ff}
 .engagement-section .section-head h2 em{color:#ff82c2;text-shadow:0 0 22px rgba(255,130,194,.2)}
