@@ -703,3 +703,11 @@ body{background:#F6F4EE;color:#10213B}
   html{scroll-behavior:auto}
   *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important}
 }
+
+/* Customer reference uploads */
+.reference-file-list{display:flex;flex-wrap:wrap;gap:8px;margin-top:8px}
+.reference-file-list span{display:inline-flex;align-items:center;padding:7px 10px;border:1px solid #DCE3EC;border-radius:8px;background:#F3F6FA;color:#24344B;font-size:12px;overflow-wrap:anywhere}
+.reference-admin-list{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin:12px 0;padding:12px;border:1px solid #DCE3EC;border-radius:10px;background:#F7F9FC}
+.reference-admin-list b{width:100%;font-size:13px;color:#10213B}
+.reference-admin-list button{border:1px solid #CBD5E1;border-radius:7px;background:#fff;padding:8px 10px;color:#10213B;font:600 12px var(--sans);cursor:pointer}
+.reference-admin-list button:hover{border-color:#2D7CFF}
