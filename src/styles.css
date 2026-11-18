@@ -703,3 +703,16 @@ body{background:#F6F4EE;color:#10213B}
   html{scroll-behavior:auto}
   *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important}
 }
+
+
+/* Portfolio admin rows: usable on narrow phone screens */
+.admin-project{min-width:0;flex-wrap:wrap;gap:10px;padding:13px 0}
+.admin-project img{width:56px;height:56px;flex:0 0 56px;border-radius:8px;background:#e9edf3}
+.admin-project-info{min-width:0;overflow-wrap:anywhere}
+.admin-project-info b{display:block;line-height:1.4}
+.admin-project-actions{display:flex;align-items:center;gap:7px;flex-wrap:wrap;margin-left:auto}
+.admin-project-actions button{min-height:36px;padding:8px 10px;border:1px solid #dce3ec;border-radius:7px;background:#fff;color:#34445b;font-size:11px;font-weight:700;cursor:pointer}
+.admin-project-actions button:first-child{color:#245b91}
+.admin-project-actions button:last-child{color:#a13d42}
+.admin-project-actions button:focus-visible{outline:3px solid #2d7cff;outline-offset:2px}
+@media(max-width:560px){.admin-project{align-items:flex-start}.admin-project-info{flex:1 1 calc(100% - 76px)}.admin-project-actions{width:100%;margin-left:0}.admin-project-actions button{flex:1 1 auto}}
